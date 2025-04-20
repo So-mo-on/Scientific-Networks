@@ -11,7 +11,7 @@ from pyvis.network import Network
 import re
 
 
-API_KEY = st.secrets["api"]["key"]
+API_KEY = st.secrets["API_KEY"]
 BASE_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
 
 
