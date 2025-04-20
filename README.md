@@ -1,4 +1,4 @@
-# 🔬 Scientific Networks Explorer
+#  Scientific Networks Explorer
 
 Explore scientific collaborations and citation networks using interactive visualizations powered by the Semantic Scholar API.
 
