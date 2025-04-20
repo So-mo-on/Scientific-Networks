@@ -11,7 +11,7 @@ from pyvis.network import Network
 import re
 
 
-API_KEY = "zZi3Sx1lw759qL3ebtPQo6kObGAWaIO97GR9oCHs"  # Replace with your Semantic Scholar API key
+API_KEY = st.secrets["api"]["key"]
 BASE_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
 
 
