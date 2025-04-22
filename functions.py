@@ -67,7 +67,11 @@ def search_papers(query, n=10):
 
         df = pd.DataFrame(
             {"Title": Title, "Authors": Authors, "Year": Year, "Citation_count": Citation_count, "URL": URL})
-        #df['Authors'] = df['Authors'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+
+        # Normalize names in 'Authors' column safely
+        df['Authors'] = df['Authors'].apply(
+            lambda authors: [normalize_author_name(a) for a in authors] if isinstance(authors, list) else []
+        )
         return df
     else:
         return f"Error: {response.status_code} - {response.text}"
