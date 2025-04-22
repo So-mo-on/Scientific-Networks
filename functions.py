@@ -67,7 +67,7 @@ def search_papers(query, n=10):
 
         df = pd.DataFrame(
             {"Title": Title, "Authors": Authors, "Year": Year, "Citation_count": Citation_count, "URL": URL})
-        df['Authors'] = df['Authors'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+        #df['Authors'] = df['Authors'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
         return df
     else:
         return f"Error: {response.status_code} - {response.text}"
@@ -78,9 +78,9 @@ def couth(query, n):
     df = search_papers(query, n)
 
     # Ensure 'Authors' is a list of lists
-    # df['Authors'] = df['Authors'].apply(
-    #     lambda x: x if isinstance(x, list) else (x.split(",") if isinstance(x, str) else []))
-
+    df['Authors'] = df['Authors'].apply(
+        lambda x: x.split(",") if isinstance(x, str) else x
+    )
     # Extract all unique authors
     unique_authors = np.unique(np.concatenate(df['Authors'].values))
     n_auth = len(unique_authors)
