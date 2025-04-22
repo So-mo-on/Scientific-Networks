@@ -162,7 +162,7 @@ def visualize_giant_component(query, n):
         node_size = scale_degree(degree)
         net.add_node(node,
                      label=str(node),
-                     size=node_size,
+                     size=node_size * 0.5,
                      x=pos[node][0] * 1000,
                      y=pos[node][1] * 1000,
                      physics=False)
