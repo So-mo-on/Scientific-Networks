@@ -9,7 +9,7 @@ import networkx as nx
 import tempfile
 from pyvis.network import Network
 import re
-
+import ast
 
 API_KEY = st.secrets["API_KEY"]
 BASE_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
@@ -67,7 +67,7 @@ def search_papers(query, n=10):
 
         df = pd.DataFrame(
             {"Title": Title, "Authors": Authors, "Year": Year, "Citation_count": Citation_count, "URL": URL})
-        df["Authors"] = df["Authors"].apply(lambda authors: [normalize_author_name(name) for name in authors])
+        df['Authors'] = df['Authors'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
         return df
     else:
         return f"Error: {response.status_code} - {response.text}"
