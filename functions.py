@@ -1,5 +1,3 @@
-
-import networkx as nx
 import streamlit as st
 import scipy as sp
 import requests
@@ -9,7 +7,10 @@ import networkx as nx
 import tempfile
 from pyvis.network import Network
 import re
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 import ast
+
 
 API_KEY = st.secrets["API_KEY"]
 BASE_URL = "https://api.semanticscholar.org/graph/v1/paper/search"
