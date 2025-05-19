@@ -38,7 +38,7 @@ if option == "Coauthorship":
 # # Citation page (or other options)
 elif option == "Paper network":
     # st.header("Citation Query")
-    query = st.text_input("Search by keyword, research topic, field name, or researcher to explore collaboration patterns.")
+    query = st.text_input("Discover paper similarity networks by searching research topics, keywords, or authors.")
     n = st.number_input("How many results would you like to include in the network?", min_value=0, max_value=100)
 
     if st.button("Results"):
