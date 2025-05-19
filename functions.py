@@ -260,15 +260,14 @@ def visualize_giant_component_paper(query, n):
     threshold = 0.1
     G, df = build_similarity_network(query, n, threshold=threshold)
     #
-    # components = list(nx.connected_components(G))
-    # if not components:
-    #     print("No connected components found.")
-    #     return
-    #
-    # # Get the largest component
-    # giant_nodes = max(components, key=len)
-    # giant_component = G.subgraph(giant_nodes).copy()
-    giant_component = G.copy()
+    components = list(nx.connected_components(G))
+    if not components:
+        print("No connected components found.")
+        return
+    
+    # Get the largest component
+    giant_nodes = max(components, key=len)
+    giant_component = G.subgraph(giant_nodes).copy()
     # Map node indices to names
     mapping = {i: df.loc[i, "Title"] for i in giant_component.nodes()}
     nx.relabel_nodes(giant_component, mapping, copy=False)
